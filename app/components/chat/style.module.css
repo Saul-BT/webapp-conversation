@@ -35,7 +35,14 @@
 
 .answer::before {
   left: 0;
-  background: url(./icons/answer.svg) no-repeat;
+  mask-image: url(./icons/answer.svg);
+  background-color: #F3F4F6;
+}
+
+@media (prefers-color-scheme: dark) {
+  .answer::before {
+    background-color: #334155;
+  }
 }
 
 .answerWrap .itemOperation {
@@ -48,7 +55,14 @@
 
 .question::before {
   right: 0;
-  background: url(./icons/question.svg) no-repeat;
+  mask-image: url(./icons/question.svg);
+  background-color: #E1EFFE
+}
+
+@media (prefers-color-scheme: dark) {
+  .question::before {
+    background-color: #1E3A8A;
+  }
 }
 
 .textArea {

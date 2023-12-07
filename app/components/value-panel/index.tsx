@@ -24,13 +24,13 @@ const TemplateVarPanel: FC<ITemplateVarPanelProps> = ({
     <div className={cn(isFold ? 'border border-indigo-100' : s.boxShodow, className, 'rounded-xl ')}>
       {/* header */}
       <div
-        className={cn(isFold && 'rounded-b-xl', 'rounded-t-xl px-6 py-4 bg-indigo-25 text-xs')}
+        className={cn(isFold && 'rounded-b-xl', 'rounded-t-xl px-6 py-4 bg-indigo-25 dark:bg-indigo-900 text-xs')}
       >
         {header}
       </div>
       {/* body */}
       {!isFold && children && (
-        <div className='rounded-b-xl p-6'>
+        <div className='rounded-b-xl p-6 dark:bg-slate-700'>
           {children}
         </div>
       )}

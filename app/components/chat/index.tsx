@@ -62,7 +62,7 @@ export type IChatItem = {
 
 const OperationBtn = ({ innerContent, onClick, className }: { innerContent: React.ReactNode; onClick?: () => void; className?: string }) => (
   <div
-    className={`relative box-border flex items-center justify-center h-7 w-7 p-0.5 rounded-lg bg-white cursor-pointer text-gray-500 hover:text-gray-800 ${className ?? ''}`}
+    className={`relative box-border flex items-center justify-center h-7 w-7 p-0.5 rounded-lg bg-white dark:bg-slate-800 cursor-pointer text-gray-500 hover:text-gray-800 dark:hover:text-slate-300 ${className ?? ''}`}
     style={{ boxShadow: '0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -2px rgba(0, 0, 0, 0.05)' }}
     onClick={onClick && onClick}
   >
@@ -94,7 +94,7 @@ export const EditIconSolid: FC<{ className?: string }> = ({ className }) => {
 }
 
 const IconWrapper: FC<{ children: React.ReactNode | string }> = ({ children }) => {
-  return <div className={'rounded-lg h-6 w-6 flex items-center justify-center hover:bg-gray-100'}>
+  return <div className={'rounded-lg h-6 w-6 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-slate-700'}>
     {children}
   </div>
 }
@@ -131,7 +131,7 @@ const Answer: FC<IAnswerProps> = ({ item, feedbackDisabled = false, onFeedback, 
         content={isLike ? '取消赞同' : '取消反对'}
       >
         <div
-          className={'relative box-border flex items-center justify-center h-7 w-7 p-0.5 rounded-lg bg-white cursor-pointer text-gray-500 hover:text-gray-800'}
+          className={'relative box-border flex items-center justify-center h-7 w-7 p-0.5 rounded-lg bg-white dark:bg-slate-800 cursor-pointer text-gray-500 hover:text-gray-800 dark:hover:text-slate-300'}
           style={{ boxShadow: '0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -2px rgba(0, 0, 0, 0.05)' }}
           onClick={async () => {
             await onFeedback?.(id, { rating: null })
@@ -181,8 +181,8 @@ const Answer: FC<IAnswerProps> = ({ item, feedbackDisabled = false, onFeedback, 
           }
         </div>
         <div className={`${s.answerWrap}`}>
-          <div className={`${s.answer} relative text-sm text-gray-900`}>
-            <div className={'ml-2 py-3 px-4 bg-gray-100 rounded-tr-2xl rounded-b-2xl'}>
+          <div className={`${s.answer} relative text-sm text-gray-900  dark:text-slate-200 dark:before:border-slate-700`}>
+            <div className={'ml-2 py-3 px-4 bg-gray-100 dark:bg-slate-700 rounded-tr-2xl rounded-b-2xl'}>
               {item.isOpeningStatement && (
                 <div className='flex items-center mb-1 gap-1'>
                   <OpeningStatementIcon />
@@ -220,9 +220,9 @@ const Question: FC<IQuestionProps> = ({ id, content, useCurrentUserAvatar, imgSr
   return (
     <div className='flex items-start justify-end' key={id}>
       <div>
-        <div className={`${s.question} relative text-sm text-gray-900`}>
+        <div className={`${s.question} relative text-sm text-gray-900  dark:text-slate-200 dark:before:border-slate-700`}>
           <div
-            className={'mr-2 py-3 px-4 bg-blue-500 rounded-tl-2xl rounded-b-2xl'}
+            className={'mr-2 py-3 px-4 bg-blue-500 dark:bg-blue-900 rounded-tl-2xl rounded-b-2xl'}
           >
             {imgSrcs && imgSrcs.length > 0 && (
               <ImageGallery srcs={imgSrcs} />
@@ -355,7 +355,7 @@ const Chat: FC<IChatProps> = ({
       {
         !isHideSendInput && (
           <div className={cn(!feedbackDisabled && '!left-3.5 !right-3.5', 'absolute z-10 bottom-0 left-0 right-0')}>
-            <div className='p-[5.5px] max-h-[150px] bg-white border-[1.5px] border-gray-200 rounded-xl overflow-y-auto'>
+            <div className='p-[5.5px] max-h-[150px] bg-white dark:bg-slate-800 border-[1.5px] border-gray-200 dark:border-slate-600 rounded-xl overflow-y-auto'>
               {
                 visionConfig?.enabled && (
                   <>
@@ -381,7 +381,7 @@ const Chat: FC<IChatProps> = ({
               }
               <Textarea
                 className={`
-                  block w-full px-2 pr-[118px] py-[7px] leading-5 max-h-none text-sm text-gray-700 outline-none appearance-none resize-none
+                  block w-full px-2 pr-[118px] py-[7px] leading-5 max-h-none text-sm dark:text-slate-400 dark:bg-slate-800 outline-none appearance-none resize-none
                   ${visionConfig?.enabled && 'pl-12'}
                 `}
                 value={query}
@@ -391,7 +391,7 @@ const Chat: FC<IChatProps> = ({
                 autoSize
               />
               <div className="absolute bottom-2 right-2 flex items-center h-8">
-                <div className={`${s.count} mr-4 h-5 leading-5 text-sm bg-gray-50 text-gray-500`}>{query.trim().length}</div>
+                <div className={`${s.count} mr-4 h-5 leading-5 text-sm bg-gray-50 text-gray-500 dark:bg-slate-800 dark:text-slate-500`}>{query.trim().length}</div>
                 <Tooltip
                   selector='send-tip'
                   htmlContent={

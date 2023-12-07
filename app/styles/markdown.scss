@@ -70,6 +70,12 @@
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  .markdown-body {
+    color: #c9d1d9;
+  }
+}
+
 .markdown-body .octicon {
   display: inline-block;
   fill: currentColor;

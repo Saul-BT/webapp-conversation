@@ -70,7 +70,7 @@ const Welcome: FC<IWelcomeProps> = ({
     if (!promptConfig)
       return ''
     const res = promptConfig.prompt_template.replace(regex, (match, p1) => {
-      return `<span class='text-gray-800 font-bold'>${inputs?.[p1] ? inputs?.[p1] : match}</span>`
+      return `<span class='text-gray-800 dark:text-slate-100 font-bold'>${inputs?.[p1] ? inputs?.[p1] : match}</span>`
     })
     return res
   })()
@@ -82,8 +82,8 @@ const Welcome: FC<IWelcomeProps> = ({
 
   const renderHeader = () => {
     return (
-      <div className='absolute top-0 left-0 right-0 flex items-center justify-between border-b border-gray-100 mobile:h-12 tablet:h-16 px-8 bg-white'>
-        <div className='text-gray-900'>{conversationName}</div>
+      <div className='absolute top-0 left-0 right-0 flex items-center justify-between border-b border-gray-100 dark:border-slate-700 mobile:h-12 tablet:h-16 px-8 bg-white dark:bg-slate-800'>
+        <div className='text-gray-900  dark:text-slate-200'>{conversationName}</div>
       </div>
     )
   }
@@ -93,7 +93,7 @@ const Welcome: FC<IWelcomeProps> = ({
       <div className='space-y-3'>
         {promptConfig.prompt_variables.map(item => (
           <div className='tablet:flex items-start mobile:space-y-2 tablet:space-y-0 mobile:text-xs tablet:text-sm' key={item.key}>
-            <label className={`flex-shrink-0 flex items-center tablet:leading-9 mobile:text-gray-700 tablet:text-gray-900 mobile:font-medium pc:font-normal ${s.formLabel}`}>{item.name}</label>
+            <label className={`flex-shrink-0 flex items-center tablet:leading-9 dark:!text-slate-400 tablet:text-gray-900  dark:text-slate-200 mobile:font-medium pc:font-normal ${s.formLabel}`}>{item.name}</label>
             {item.type === 'select'
               && (
                 <Select
@@ -110,7 +110,7 @@ const Welcome: FC<IWelcomeProps> = ({
                 placeholder={`${item.name}${!item.required ? `(${t('appDebug.variableTable.optional')})` : ''}`}
                 value={inputs?.[item.key] || ''}
                 onChange={(e) => { setInputs({ ...inputs, [item.key]: e.target.value }) }}
-                className={'w-full flex-grow py-2 pl-3 pr-3 box-border rounded-lg bg-gray-50'}
+                className={'w-full flex-grow py-2 pl-3 pr-3 box-border rounded-lg bg-gray-50 dark:bg-slate-800'}
                 maxLength={item.max_length || DEFAULT_VALUE_MAX_LEN}
               />
             )}
@@ -246,7 +246,7 @@ const Welcome: FC<IWelcomeProps> = ({
             <PromptTemplate html={highLightPromoptTemplate} />
             {isFold && (
               <div className='flex items-center justify-between mt-3 border-t border-indigo-100 pt-4 text-xs text-indigo-600'>
-                <span className='text-gray-700'>{t('app.chat.configStatusDes')}</span>
+                <span className='dark:text-slate-400'>{t('app.chat.configStatusDes')}</span>
                 <EditBtn onClick={() => setIsFold(false)} />
               </div>
             )}

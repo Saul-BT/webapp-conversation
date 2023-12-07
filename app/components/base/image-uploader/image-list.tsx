@@ -102,7 +102,7 @@ const ImageList: FC<ImageListProps> = ({
                 <div
                   className={`
                     absolute z-10 -top-[9px] -right-[9px] items-center justify-center w-[18px] h-[18px] 
-                    bg-white hover:bg-gray-50 border-[0.5px] border-black/[0.02] rounded-2xl shadow-lg
+                    bg-white dark:bg-slate-800 hover:bg-gray-50 border-[0.5px] border-black/[0.02] rounded-2xl shadow-lg
                     cursor-pointer
                     ${item.progress === -1 ? 'flex' : 'hidden group-hover:flex'}
                   `}
